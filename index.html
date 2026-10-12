@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#24558a">
+<meta name="description" content="أرشيفنا: ذاكرة الإنترنت العربي والمواقع والكارتونات القديمة.">
+<title>أرشيفنا | ذاكرة الإنترنت العربي</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#dce5ef;color:#303943;font-family:Tahoma,Arial,sans-serif;font-size:14px;line-height:1.8}
+a{color:#174f8b}
+.wrap{max-width:1050px;margin:auto;padding:12px}
+header{background:linear-gradient(#3975ad,#194778);color:#fff;border:1px solid #153b62;padding:18px;box-shadow:0 2px 5px #9ba9b7}
+header h1{margin:0;font-size:30px}header p{margin:3px 0 0;color:#e0edff}
+nav{background:#eaf1f8;border:1px solid #9bb3cb;border-top:0;padding:9px;display:flex;flex-wrap:wrap;gap:7px}
+nav a{padding:5px 11px;background:#d5e3f1;border:1px solid #b0c5db;text-decoration:none;font-weight:bold}
+nav a:hover{background:#fff}
+.notice{margin:12px 0;padding:10px;background:#fffbe5;border:1px solid #e0d09b}
+.layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:12px;align-items:start}
+.panel{background:#fff;border:1px solid #b5c6d7;margin-bottom:12px}
+.panel h2{font-size:15px;margin:0;padding:7px 10px;color:#fff;background:#356a9e;border-bottom:1px solid #214d78}
+.inside{padding:12px}
+.categories{display:grid;gap:6px}
+.categories button{text-align:right;cursor:pointer;background:#edf3f9;border:1px solid #cad7e4;padding:8px;color:#174f8b;font:inherit}
+.categories button:hover,.categories button.active{background:#d4e5f7;border-color:#638cb6}
+.search{display:flex;gap:7px;margin-bottom:12px}
+input{width:100%;min-width:0;padding:10px;border:1px solid #a9bacb;font:inherit;background:white}
+.search button{padding:8px 14px;border:1px solid #1c4773;background:#24558a;color:white;font:inherit;cursor:pointer}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.entry{border:1px solid #c2cfdb;padding:12px;background:#fff;min-width:0}
+.entry h3{font-size:16px;margin:0 0 5px;color:#174f8b}
+.tag{display:inline-block;background:#e8f0f8;border:1px solid #c9d8e7;padding:1px 7px;font-size:11px;margin-bottom:5px}
+.entry p{margin:4px 0 10px}.entry a{display:inline-block;margin-left:8px;font-weight:bold}
+.muted{color:#687887;font-size:12px}
+footer{text-align:center;margin-top:12px;padding:15px;background:#eaf1f8;border:1px solid #b5c6d7;color:#586b7c}
+#empty{padding:20px;text-align:center}
+@media(max-width:650px){.layout{grid-template-columns:1fr}.cards{grid-template-columns:1fr}header h1{font-size:25px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><h1>◈ أرشيفنا</h1><p>ذاكرة الإنترنت العربي | من الماضي إلى الحاضر</p></header>
+<nav aria-label="التنقل الرئيسي"><a href="#home">الرئيسية</a><a href="#archive">الأرشيف</a><a href="#about">عن المشروع</a></nav>
+<div class="notice">أهلاً بك في أرشيفنا! مشروع مستقل لتوثيق المواقع العربية القديمة والكارتونات والأنمي وذكريات الإنترنت.</div>
+<div class="layout" id="home">
+<aside>
+<section class="panel"><h2>أقسام الأرشيف</h2><div class="inside categories">
+<button class="active" data-category="all">كل الأرشيف</button><button data-category="web">مواقع ومنتديات</button><button data-category="cartoon">كارتون وأنمي</button><button data-category="games">ألعاب قديمة</button><button data-category="software">برامج قديمة</button>
+</div></section>
+<section class="panel"><h2>روابط مفيدة</h2><div class="inside"><p><a href="https://web.archive.org/" target="_blank" rel="noopener noreferrer">آلة الزمن للإنترنت</a></p><p class="muted">ابحث عن المواقع القديمة وشاهد النسخ التي حفظها الأرشيف.</p></div></section>
+</aside>
+<main id="archive">
+<section class="panel"><h2>البحث في الأرشيف</h2><div class="inside"><div class="search"><input id="search" type="search" placeholder="اكتب اسم موقع أو كارتون..." aria-label="البحث في الأرشيف"><button id="searchBtn">بحث</button></div><p class="muted">ابحث بالاسم أو الوصف أو نوع المحتوى.</p></div></section>
+<section class="panel"><h2>دليل المحتوى</h2><div class="inside"><p id="count" class="muted"></p><div class="cards" id="cards"></div><div id="empty" hidden>ما لقينا نتائج مطابقة.</div></div></section>
+</main>
+</div>
+<section class="panel" id="about"><h2>عن أرشيفنا</h2><div class="inside">أرشيفنا مشروع مستقل وغير رسمي، هدفه حفظ ذاكرة الإنترنت العربي وتوثيق المواقع والأعمال القديمة.
+<p>لا ندّعي ملكية العلامات التجارية أو المحتوى الذي يعود لأصحابه. نضيف روابط للمصادر الأصلية والنسخ المؤرشفة، ونستضيف فقط المواد التي نملك حق نشرها أو حصلنا على إذن باستخدامها.</p><p class="muted">النسخة الأولى — 2026</p></div></section>
+<footer>أرشيفنا © 2026 — ذاكرة تستحق أن تبقى</footer>
+</div>
+<script>
+const entries=[
+{title:"Wayback Machine",category:"web",label:"أرشيف مواقع",description:"خدمة لاستكشاف نسخ محفوظة من صفحات الويب القديمة.",url:"https://web.archive.org/"},
+{title:"توثيق GitHub Pages",category:"software",label:"أدوات ويب",description:"مرجع لإنشاء مواقع ثابتة ونشرها على الإنترنت.",url:"https://docs.github.com/pages"},
+{title:"دليل الكارتونات العربية",category:"cartoon",label:"قيد الإضافة",description:"سيضم معلومات موثقة عن الأعمال والدبلجة وسنوات العرض.",url:""},
+{title:"دليل الألعاب القديمة",category:"games",label:"قيد الإضافة",description:"توثيق ألعاب المتصفح والألعاب الكلاسيكية ومصادرها.",url:""},
+{title:"دليل المواقع العربية",category:"web",label:"قيد الإضافة",description:"سجل للمواقع والمنتديات العربية القديمة وروابط أرشيفها.",url:""}
+];
+const cards=document.getElementById("cards"),search=document.getElementById("search"),count=document.getElementById("count"),empty=document.getElementById("empty");let category="all";
+function render(){const q=search.value.trim().toLowerCase();const filtered=entries.filter(x=>(category==="all"||x.category===category)&&(x.title+" "+x.description+" "+x.label).toLowerCase().includes(q));cards.replaceChildren();count.textContent="عدد النتائج: "+filtered.length;empty.hidden=filtered.length!==0;filtered.forEach(item=>{const article=document.createElement("article");article.className="entry";const tag=document.createElement("span");tag.className="tag";tag.textContent=item.label;const h=document.createElement("h3");h.textContent=item.title;const p=document.createElement("p");p.textContent=item.description;article.append(tag,h,p);if(item.url){const a=document.createElement("a");a.href=item.url;a.target="_blank";a.rel="noopener noreferrer";a.textContent="زيارة المصدر ↗";article.append(a)}else{const note=document.createElement("span");note.className="muted";note.textContent="سيُضاف المصدر بعد التحقق";article.append(note)}cards.append(article)})}
+document.querySelectorAll("[data-category]").forEach(b=>b.addEventListener("click",()=>{category=b.dataset.category;document.querySelectorAll("[data-category]").forEach(x=>x.classList.toggle("active",x===b));render()}));search.addEventListener("input",render);document.getElementById("searchBtn").addEventListener("click",render);render();
+</script>
+</body>
+</html>
